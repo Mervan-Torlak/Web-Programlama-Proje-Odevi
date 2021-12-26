@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Web_Proje.Models.Books>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Admin</h1>
+
+<p>
+    <a asp-action="Create">@ViewData["yeniKitapOlustur"]</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @ViewData["kitapBasligi"]
+            </th>
+            <th>
+                @ViewData["ilkBasimTarihi"]
+            </th>
+            <th>
+                @ViewData["yazar"]
+            </th>
+            <th>
+                @ViewData["sayfaSayisi"]
+            </th>
+            <th>
+                @ViewData["konu"]
+            </th>
+            <th>
+                @ViewData["resimLinki"]
+            </th>
+            <th>
+                @ViewData["kategori"]
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.kitapAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.basimYili)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.yazar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sayfaSayisi)
+            </td>
+            <td>
+                <p style="width: 70px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> @Html.DisplayFor(modelItem => item.konu)</p>
+            </td>
+            <td>
+                <p style="width: 70px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> @Html.DisplayFor(modelItem => item.link)</p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kategori)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.kitapID">@ViewData["duzenle"]</a> |
+                <a asp-action="Details" asp-route-id="@item.kitapID">@ViewData["detaylar"]</a> |
+                <a asp-action="Delete" asp-route-id="@item.kitapID">@ViewData["sil"]</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

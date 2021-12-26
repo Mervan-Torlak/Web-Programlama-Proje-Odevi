@@ -1,0 +1,63 @@
+﻿@model Web_Proje.Models.Books
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["olustur"]</h1>
+
+<h4>@ViewData["kitaplar"]</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="kitapAdi" class="control-label">@ViewData["kitapBasligi"]</label>
+                <input asp-for="kitapAdi" class="form-control" />
+                <span asp-validation-for="kitapAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="basimYili" class="control-label">@ViewData["ilkBasimTarihi"]</label>
+                <input asp-for="basimYili" class="form-control" />
+                <span asp-validation-for="basimYili" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="yazar" class="control-label"> @ViewData["yazar"]</label>
+                <input asp-for="yazar" class="form-control" />
+                <span asp-validation-for="yazar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sayfaSayisi" class="control-label"> @ViewData["sayfaSayisi"]</label>
+                <input asp-for="sayfaSayisi" class="form-control" />
+                <span asp-validation-for="sayfaSayisi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="konu" class="control-label"> @ViewData["konu"]</label>
+                <input asp-for="konu" class="form-control" />
+                <span asp-validation-for="konu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="link" class="control-label">@ViewData["resimLinki"]</label>
+                <input asp-for="link" class="form-control" />
+                <span asp-validation-for="link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kategori" class="control-label"> @ViewData["kategori"] (Edebiyat / Çocuk / Eğitim)</label>
+                <input asp-for="kategori" class="form-control" />
+                <span asp-validation-for="kategori" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@ViewData["listeyeDon"]</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Web_Proje.Models.Messages>
+
+@{
+    ViewData["Title"] = @ViewData["yorumlar"];
+}
+
+
+<h1>@ViewData["yorumlar"]</h1>
+@{ if (User.Identity.IsAuthenticated)
+   {
+        <p>
+            <a asp-area="" asp-controller="Messages" asp-action="Create" asp-route-id="@ViewBag.id">@ViewData["yorumYaz"]</a>
+        </p>
+   }
+   else 
+   {
+	    <p class="text-warning">
+            @ViewData["uyari"]
+        </p>
+   }
+}
+  
+@foreach (var item in Model.Reverse())
+ {
+    @if (item.BookId == ViewBag.id)
+     {
+        <p class="font-weight-bold">
+            @Html.DisplayFor(modelItem => item.User)
+        </p>
+                
+        <p>
+            @Html.DisplayFor(modelItem => item.message)
+        </p>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("admin"))
+            {
+                <a asp-action="Delete" asp-route-id="@item.messageID">@ViewData["sil"]</a>                
+            }
+         }
+        <hr />
+        <hr />
+     }
+ }
+

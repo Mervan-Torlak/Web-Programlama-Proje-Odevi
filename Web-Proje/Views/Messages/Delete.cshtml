@@ -1,0 +1,40 @@
+﻿@model Web_Proje.Models.Messages
+
+@{
+    ViewData["Title"] = ViewData["Sil"];
+}
+
+<h1>@ViewData["Sil"]</h1>
+
+<h3>@ViewData["silUyari"]</h3>
+<div>
+    <h4>@ViewData["yorumlar"]</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @ViewData["kullanici"]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User)
+        </dd>
+        <dt class="col-sm-2">
+            @ViewData["yorum"]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.message)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BookId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BookId)
+        </dd>
+
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="messageID" />
+        <input type="submit" value="@ViewData["sil"]" class="btn btn-danger" /> |
+        <a asp-action="Index">@ViewData["yorumlaraDon"]</a>
+    </form>
+</div>

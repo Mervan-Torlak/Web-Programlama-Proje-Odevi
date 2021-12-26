@@ -1,0 +1,44 @@
+﻿@model Web_Proje.Models.Messages
+@using Microsoft.AspNetCore.Identity
+
+@{
+    ViewData["Title"] = @ViewData["olustur"];
+}
+
+<h1>@ViewData["olustur"]</h1>
+
+<h4>@ViewData["yorumlar"]</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="User" class="control-label">@ViewData["kullanici"]</label>
+                <input readonly value="@User.Identity.Name" asp-for="User" class="form-control" />
+                <span asp-validation-for="User" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="message" class="control-label">@ViewData["yorum"]</label>
+                <input asp-for="message" class="form-control" />
+                <span asp-validation-for="message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookId" class="control-label"></label>
+                <input readonly value="@ViewBag.id" asp-for="BookId" class="form-control" />
+                <span asp-validation-for="BookId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@ViewData["olustur"]" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-id="@ViewBag.id">@ViewData["yorumlaraDon"]</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

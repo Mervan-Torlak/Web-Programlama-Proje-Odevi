@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Web_Proje.Models.Books>
+@{ ViewData["Title"] = "Home Page"; }
+
+<div class="container-fluid bg-3 text-center">
+
+    @foreach (var item in Model.Reverse())
+     { 
+        @if (item.kitapID == ViewBag.id)
+         {
+            <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.kitapAdi)</h5>
+            </div>
+            <br /> 
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <img style="width: 100%;" src="@Html.DisplayFor(modelItem => item.link)" alt="Card image cap">
+                </div>
+
+                <div class="col-sm-6">
+                    <p style="text-align:justify">@Html.DisplayFor(modelItem => item.konu)</p>
+                    <p>@ViewData["ilkBasımTarihi"]: @Html.DisplayFor(modelItem => item.basimYili)</p>
+                    <p>@ViewData["sayfaSayısı"]: @Html.DisplayFor(modelItem => item.sayfaSayisi)</p>
+                </div>
+            </div>
+            <a style="font-size:36pt" asp-area="" asp-controller="Messages" asp-action="Index" asp-route-id="@item.kitapID">@ViewData["yorumlar"]</a>
+         }
+        
+     }
+
+</div>
