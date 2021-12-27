@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Web_Proje.Data;
 using Web_Proje.Models;
 
 namespace Web_Proje.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20201231104357_db")]
     partial class db
     {

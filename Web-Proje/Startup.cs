@@ -42,7 +42,7 @@ namespace Web_Proje
                 options.Password.RequiredLength = 3;
                 options.Password.RequiredUniqueChars = 0;
             });
-            services.AddDbContext<Context>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

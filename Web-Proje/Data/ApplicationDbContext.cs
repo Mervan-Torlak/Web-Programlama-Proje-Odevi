@@ -13,6 +13,8 @@ namespace Web_Proje.Data
             : base(options)
         {
         }
-        public DbSet<Web_Proje.Models.Messages> Messages { get; set; }
+        public DbSet<Messages> Messages { get; set; }
+        public DbSet<Books> books { get; set; }
+        public DbSet<Messages> messages { get; set; }
     }
 }

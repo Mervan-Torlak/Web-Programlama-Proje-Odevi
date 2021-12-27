@@ -10,21 +10,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using Web_Proje.Data;
 using Web_Proje.Models;
 
 namespace Web_Proje.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly Context _context;
+        private readonly ApplicationDbContext _context;
         private readonly ILogger<HomeController> _logger;
         private readonly IStringLocalizer<HomeController> _localizer;
 
-        public HomeController(ILogger<HomeController> logger, Context context, IStringLocalizer<HomeController> localizer)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IStringLocalizer<HomeController> localizer)
         {
             _logger = logger;
             _context = context;
-            _localizer = localizer;
+            _localizer = localizer;//dil
         }
 
         public async Task<IActionResult> Index()

@@ -3,11 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Web_Proje.Data;
 using Web_Proje.Models;
 
 namespace Web_Proje.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class ContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

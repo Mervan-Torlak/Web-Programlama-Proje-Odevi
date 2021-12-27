@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Web_Proje.Data;
 using Web_Proje.Models;
 
 namespace Web_Proje.Controllers
@@ -16,10 +17,10 @@ namespace Web_Proje.Controllers
     [Authorize(Roles="admin")]
     public class AdminController : Controller
     {
-        private readonly Context _context;
+        private readonly ApplicationDbContext _context;
         private readonly IStringLocalizer<AdminController> _localizer;
 
-        public AdminController(Context context, IStringLocalizer<AdminController> localizer)
+        public AdminController(ApplicationDbContext context, IStringLocalizer<AdminController> localizer)
         {
             _context = context;
             _localizer = localizer;
